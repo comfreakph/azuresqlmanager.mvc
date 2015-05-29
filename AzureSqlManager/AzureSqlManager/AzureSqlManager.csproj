@@ -306,8 +306,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
-    <Content Include="App_Data\HamakLabsMgmtCert.cer" />
-    <Content Include="App_Data\HamakLabsMgmtCert.pfx" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Icon.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -370,7 +368,9 @@
     <Content Include="Views\Servers\Index.cshtml" />
     <Content Include="Views\Servers\FirewallRules.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />

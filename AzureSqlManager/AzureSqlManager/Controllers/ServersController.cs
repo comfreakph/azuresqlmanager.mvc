@@ -12,17 +12,18 @@ namespace AzureSqlManager.Controllers
     {
         /// <summary>
         /// Path of your certificate, I usually put the certificate in App_Data Folder
+        /// put both .pfx and .cer in App_Data folder
         /// </summary>
         /// <returns></returns>
         private string BuildPath()
         {
-            return Server.MapPath("~/App_Data/HamakLabsMgmtCert.pfx");
+            return Server.MapPath("~/App_Data/your_certificate_name.pfx");
         }
 
         /// <summary>
         /// azure account subscription ID
         /// </summary>
-        private static string _subscriptionId = "f81d2831-f836-4d57-afee-d00a366cce1f";
+        private static string _subscriptionId = "azure_subscription_id_here";
 
         // GET: Servers
         public async Task<ActionResult> Index()
