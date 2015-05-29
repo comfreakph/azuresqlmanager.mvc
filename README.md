@@ -1,5 +1,5 @@
 # azuresqlmanager.mvc
-Azure SQL Manager is a management portal for the developers to add thier own IP address to Azure SQL Server. No need to ask them what is thier IP address let them assign it!...
+Azure SQL Manager is a management portal for the developers to add thier own IP address to Azure SQL Server. No need to ask them what is their IP address let them assign it!...
 ================================================================================================================================
 
 How Do You Use It?
