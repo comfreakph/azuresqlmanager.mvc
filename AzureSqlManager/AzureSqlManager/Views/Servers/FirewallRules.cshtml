@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Firewall Rules";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Servers
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-table"></i> Servers
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Firewall Rules for - @ViewBag.ServerName</h1>
+            <span><b>My IP: @ViewBag.IP</b></span>&nbsp;&nbsp;@Html.ActionLink("Add My IP", "SQLAddFirewallRule", new { serverName = @ViewBag.ServerName }, new { @class = "btn btn-default" })
+        </div>
+        <!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Starting IP</th>
+                            <th>Ending IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.StartIPAddress</td>
+                                <td>@item.EndIPAddress</td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>

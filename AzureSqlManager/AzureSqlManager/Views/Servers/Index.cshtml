@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Servers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+               Servers 
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-table"></i> Servers
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Server</th>
+                            <th>Location</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            string url = "https://" + item.Name + ".database.windows.net/?langid=en-us";
+                            
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Location</td>
+                                <td>
+                                    <a href="/Servers/FirewallRules?server=@item.Name">Firewall Rules</a> |
+                                    <a href="@url" target="_blank">Manager</a>
+                                </td>
+                            </tr>
+                        }
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+
