@@ -17,7 +17,7 @@ namespace AzureSqlManager.Infrastructure
         private SubscriptionCloudCredentials getCredentials(string subscriptionId, string path)
         {
 
-            var cert = new X509Certificate2(path, "p@ssw0rd", X509KeyStorageFlags.MachineKeySet);
+            var cert = new X509Certificate2(path, "CERTIFICATE_PASSWORD_HERE", X509KeyStorageFlags.MachineKeySet);
             return new CertificateCloudCredentials(subscriptionId, cert);
         }
 
