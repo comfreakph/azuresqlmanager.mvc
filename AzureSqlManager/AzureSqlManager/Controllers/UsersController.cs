@@ -12,6 +12,7 @@ using System.Text;
 
 namespace AzureSqlManager.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private ApplicationUserManager _userManager;

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace AzureSqlManager.Controllers
 {
+    [Authorize]
     public class ServersController : Controller
     {
         /// <summary>
