@@ -4,6 +4,6 @@ Azure SQL Manager is a simple management portal for the developers to add their 
 
 How Do You Use It?
 ------------------
-instruction: http://blog.myitside.com/post/azure-sql-manager
+instructions: http://blog.myitside.com/post/azure-sql-manager
 
 
