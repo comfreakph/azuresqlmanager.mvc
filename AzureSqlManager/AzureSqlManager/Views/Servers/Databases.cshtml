@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Firewall Rules";
+    ViewBag.Title = "Databases";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Servers
+                @ViewBag.Server Databases
             </h1>
             <ol class="breadcrumb">
                 <li>
@@ -19,37 +19,29 @@
                     <i class="fa fa-table"></i> <a href="/Servers">Servers</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-table"></i> Firewall Rules
+                    <i class="fa fa-table"></i> Databases
                 </li>
             </ol>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Firewall Rules for - @ViewBag.ServerName</h1>
-            <span><b>My IP: @ViewBag.IP</b></span>&nbsp;&nbsp;@Html.ActionLink("Add My IP", "SQLAddFirewallRule", new { serverName = @ViewBag.ServerName }, new { @class = "btn btn-default" })
-        </div>
-        <!-- /.col-lg-12 -->
-    </div><!-- /.row -->
+    <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive">
-
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Starting IP</th>
-                            <th>Ending IP</th>
+                            <th>Database</th>
+                            <th>Creation Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
+
                             <tr>
                                 <td>@item.Name</td>
-                                <td>@item.StartIPAddress</td>
-                                <td>@item.EndIPAddress</td>
+                                <td>@item.CreationDate</td>
                             </tr>
                         }
 
@@ -61,3 +53,4 @@
     </div>
     <!-- /.row -->
 </div>
+

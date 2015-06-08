@@ -367,6 +367,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Servers\Index.cshtml" />
     <Content Include="Views\Servers\FirewallRules.cshtml" />
+    <Content Include="Views\Servers\Databases.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

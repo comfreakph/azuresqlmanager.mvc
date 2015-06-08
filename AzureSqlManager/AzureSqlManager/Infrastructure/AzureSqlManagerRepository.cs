@@ -23,50 +23,58 @@ namespace AzureSqlManager.Infrastructure
 
         public async Task<ServerListResponse> GetServers(string subscriptionId, string path)
         {
-            SqlManagementClient client = new SqlManagementClient(getCredentials(subscriptionId, path));
-            var servers = await client.Servers.ListAsync();
+            using (SqlManagementClient client = new SqlManagementClient(getCredentials(subscriptionId, path)))
+            {
+                var servers = await client.Servers.ListAsync();
 
-            client.Dispose();
-            return servers;
+                client.Dispose();
+                return servers;
+            }
+        }
+
+        public async Task<DatabaseListResponse> GetDatabases(string subscriptionId, string path, string serverName)
+        {
+            using (SqlManagementClient client = new SqlManagementClient(getCredentials(subscriptionId, path)))
+            {
+                var databases = await client.Databases.ListAsync(serverName);
+                return databases;
+            }
         }
 
         public async Task<FirewallRuleListResponse> GetFirewallRules(string subscriptionId, string serverName, string path)
         {
-            SqlManagementClient client = new SqlManagementClient(getCredentials(subscriptionId, path));
-            var rules = await client.FirewallRules.ListAsync(serverName);
+            using (SqlManagementClient client = new SqlManagementClient(getCredentials(subscriptionId, path))) {
+                var rules = await client.FirewallRules.ListAsync(serverName);
 
-            client.Dispose();
-            return rules;
+                return rules;
+            }
         }
 
         public async Task<FirewallRuleCreateResponse> AddFireWallRule(string subscriptionId, string serverName, string ip, string user, string path)
         {
 
-            SqlManagementClient client = new SqlManagementClient(getCredentials(subscriptionId, path));
+            using (SqlManagementClient client = new SqlManagementClient(getCredentials(subscriptionId, path))) {
+                var rule = new FirewallRuleCreateParameters()
+                {
+                    Name = string.Format("{0}-{1}", user, DateTime.UtcNow.ToShortDateString().Replace("/", "-")),
+                    StartIPAddress = ip,
+                    EndIPAddress = ip
+                };
 
-            var rule = new FirewallRuleCreateParameters()
-            {
-                Name = string.Format("{0}-{1}", user, DateTime.UtcNow.ToShortDateString().Replace("/", "-")),
-                StartIPAddress = ip,
-                EndIPAddress = ip
-            };
+                var result = await client.FirewallRules.CreateAsync(serverName, rule);
+                return result;
+            }
 
-            var result = await client.FirewallRules.CreateAsync(serverName, rule);
-
-            client.Dispose();
-
-            return result;
+            
         }
 
         public async Task<AzureOperationResponse> DeleteFirewallRule(string subscriptionId, string serverName, string ruleName, string path)
         {
-            SqlManagementClient client = new SqlManagementClient(getCredentials(subscriptionId, path));
+            using (SqlManagementClient client = new SqlManagementClient(getCredentials(subscriptionId, path))) {
+                var result = await client.FirewallRules.DeleteAsync(serverName, ruleName);
 
-            var result = await client.FirewallRules.DeleteAsync(serverName, ruleName);
-
-            client.Dispose();
-
-            return result;
+                return result;
+            }
         }
     }
 }

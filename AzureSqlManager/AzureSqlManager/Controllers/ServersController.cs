@@ -35,6 +35,13 @@ namespace AzureSqlManager.Controllers
             return View(model);
         }
 
+        public async Task<ActionResult> Databases(string server) {
+            ViewBag.Server = server;
+            AzureSqlManagerRepository azureSqlManagerRepository = new AzureSqlManagerRepository();
+            var model = await azureSqlManagerRepository.GetDatabases(_subscriptionId, BuildPath(),server);
+            return View(model);
+        }
+
         public async Task<ActionResult> FirewallRules(string server) {
             AzureSqlManagerRepository azureSqlManagerRepository = new AzureSqlManagerRepository();
             var model = await azureSqlManagerRepository.GetFirewallRules(_subscriptionId, server, BuildPath());
