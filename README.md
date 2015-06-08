@@ -9,8 +9,8 @@ instructions: http://blog.myitside.com/post/azure-sql-manager
 Versions
 -----------------
 06-06-2015
--SQL Server List
--Firewall list
--Assign firewall
+- SQL Server List
+- Firewall list
+- Assign firewall
 
 
