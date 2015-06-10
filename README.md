@@ -8,6 +8,9 @@ instructions: http://blog.myitside.com/post/azure-sql-manager
 
 Versions
 -----------------
+06-10-2015
+- Database list
+
 06-06-2015
 - SQL Server List
 - Firewall list
